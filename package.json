@@ -1,0 +1,30 @@
+{
+  "name": "try-koa",
+  "version": "1.0.0",
+  "description": "none",
+  "main": "app.js",
+  "dependencies": {
+    "koa": "^2.5.2",
+    "koa-body": "^4.0.4",
+    "koa-jwt": "^3.3.2",
+    "mongoose": "^5.2.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/The-Elderly/try-koa.git"
+  },
+  "keywords": [
+    "try",
+    "koa"
+  ],
+  "author": "dddreee",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/The-Elderly/try-koa/issues"
+  },
+  "homepage": "https://github.com/The-Elderly/try-koa#readme"
+}
