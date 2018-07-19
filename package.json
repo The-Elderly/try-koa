@@ -4,9 +4,11 @@
   "description": "none",
   "main": "app.js",
   "dependencies": {
+    "canvas": "^2.0.0-alpha.12",
     "koa": "^2.5.2",
     "koa-body": "^4.0.4",
     "koa-jwt": "^3.3.2",
+    "koa-router": "^7.4.0",
     "mongoose": "^5.2.4"
   },
   "devDependencies": {},
