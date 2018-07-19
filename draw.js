@@ -6,21 +6,55 @@ const arr = [
     'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L',
     'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
 ]
+function getRandomColor(){
+    return `rgb(${Math.round(Math.random() * 255)}, ${Math.round(Math.random() * 255)}, ${Math.round(Math.random() * 255)})`
+}
 
 module.exports = function createCode(length){
-    
-    let canvas = createCanvas(15*length, 40)
+    const width = 15 * length ; 
+    const height = 40;
+    let canvas = createCanvas(width, height)
     let ctx = canvas.getContext('2d');
 
+    var gradient = ctx.createLinearGradient(0, 0, 0, height); 
+    console.log(getRandomColor())
+    gradient.addColorStop(0, getRandomColor()); //红 
+    gradient.addColorStop(1, getRandomColor()); //蓝
+
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, width, height);
+    ctx.save();
     ctx.font = '20px "Arial SimHei"';
+
+    let drawLine = () => {
+        const num = Math.floor(Math.random() * 3 + 5);
+
+        for(let i = 0 ; i < num ; i++){
+            const color = getRandomColor();
+            const x = Math.random() * width;
+            const y = Math.random() * height;
+
+            const x2 = Math.random() * width;
+            const y2 = Math.random() * height;
+
+            ctx.strokeStyle = color;
+            
+            ctx.beginPath();
+            // ctx.lineWidth = Math.floor(Math.random() * 1 + 1)
+            ctx.lineTo(x, y);
+            ctx.lineTo(x2, y2);
+            ctx.stroke();
+        }
+    }
 
     let drawText = (text, x) => {
         ctx.save();
+        ctx.fillStyle = '#000'
         let angle = Math.random() / 10;
 
         let y = 20;
         ctx.rotate(angle);
-        ctx.fillText(text, x, y)
+        ctx.fillText(text, x, y);
         ctx.restore();
     }
     let texts = []
@@ -30,6 +64,7 @@ module.exports = function createCode(length){
         drawText(text, 13 * i + 2);
     }
 
+    drawLine();
 
     let data = canvas.toDataURL();
     canvas = null;
